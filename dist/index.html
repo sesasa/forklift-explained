@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11191c">
+  <meta name="description" content="Follow the energy inside an LPG forklift. An animated, interactive cutaway of combustion, power transmission, hydraulic flow, and lifting mechanics.">
+  <title>Forklift — Power in Motion</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d43'/%3E%3Cpath d='M8 8v16h15v-4H12V8z' fill='%2311191c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Power in Motion home"><span class="brand-icon">↗</span> POWER IN MOTION<span class="brand-divider"></span><span class="series">THE MECHANICS SERIES</span></a>
+    <button class="text-button" id="about-button">Behind the model <span aria-hidden="true">↗</span></button>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><div class="eyebrow"><span></span> MACHINE STUDY 001 / LPG FORKLIFT</div><h1>A little fuel. <em>A lot of lift.</em></h1></div>
+      <p>Follow the energy. See the mechanics.<br> A guided journey from combustion to the forks.</p>
+    </section>
+    <section class="experience" aria-label="Interactive forklift animation">
+      <div class="stage-column">
+        <div class="stage" id="stage">
+          <div class="stage-top"><span class="view-label" id="view-label">01 — THE WHOLE MACHINE</span><div class="view-tools"><button id="labels-button" class="mini-button active" aria-pressed="true">Labels</button><button id="home-view" class="mini-button" title="Show the whole forklift">Overview <span aria-hidden="true">↗</span></button><button id="fullscreen-button" class="icon-button" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button></div></div>
+          <svg id="machine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-labelledby="machine-title machine-desc">
+            <title id="machine-title">Animated cutaway of an LPG forklift</title><desc id="machine-desc">An LPG engine turns a hydraulic pump. Oil passes through a control valve to a lift cylinder. A moving chain sheave raises the forks at twice the piston travel.</desc>
+          </svg>
+          <div class="scene-caption" id="scene-caption"><span class="live-dot"></span><span id="scene-note">One machine. A connected chain of energy.</span></div>
+          <div class="legend"><span><i class="fuel"></i>Combustion</span><span><i class="mechanical"></i>Rotation</span><span><i class="pressure"></i>Pressurized oil</span><span><i class="return"></i>Return / suction</span></div>
+          <div id="engine-strokes" class="engine-strokes" hidden><span>Intake</span><span>Compress</span><span>Power</span><span>Exhaust</span></div>
+        </div>
+        <div class="transport">
+          <button class="play-button" id="play-button" aria-label="Play walkthrough"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l11 7-11 7z" fill="currentColor"/></svg></button>
+          <button class="icon-button" id="restart-button" aria-label="Restart walkthrough" title="Restart">↺</button>
+          <div class="scrubber"><label class="sr-only" for="timeline">Walkthrough time</label><input type="range" id="timeline" min="0" max="160" value="0" step="0.1"><div class="time-label"><span id="elapsed">0:00</span><span id="duration">2:40</span></div></div>
+          <label class="sr-only" for="speed">Playback speed</label><select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+          <button id="voice-button" class="voice-button" aria-pressed="false" title="Read chapter explanations aloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8q5 4 0 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Narration off</span></button>
+        </div>
+      </div>
+      <aside class="story-panel">
+        <div class="panel-header"><span class="eyebrow" id="chapter-kicker">THE BIG PICTURE</span><span id="chapter-count">01 / 09</span></div>
+        <div class="story-content"><div class="chapter-symbol" id="chapter-symbol" aria-hidden="true">↗</div><h2 id="chapter-title">From fuel<br>to lifting force.</h2><p id="chapter-description">An LPG forklift is an energy-conversion machine. Follow the engine, pump, valve and lift cylinder to see how a pallet leaves the ground.</p><div class="principle"><span class="eyebrow" id="principle-label">THE ENERGY PATH</span><div id="principle-value">Chemical → mechanical → hydraulic → motion</div></div><div class="detail-note" id="detail-note">Start with the whole system, then travel inside each component. The cutaways reveal what the bodywork normally hides.</div></div>
+        <div class="panel-footer"><span id="chapter-hint">PRESS PLAY TO FOLLOW THE ENERGY</span><button id="next-button" aria-label="Next chapter">→</button></div>
+      </aside>
+    </section>
+    <nav class="chapters" id="chapters" aria-label="Animation chapters"></nav>
+    <section class="lab" aria-labelledby="lab-title">
+      <div class="lab-intro"><span class="eyebrow">TAKE THE CONTROLS</span><h2 id="lab-title">Feel the connection.</h2><p>More flow changes speed.<br>More load changes pressure.</p><button id="explore-button" class="explore-button">Try the hydraulics <span>↗</span></button></div>
+      <div class="lab-controls"><div class="lab-control-heading"><span class="small-label">LIFT VALVE</span><span id="mode-label" class="mode-label">GUIDED MODE</span></div><div class="valve-buttons" role="group" aria-label="Hydraulic lift valve"><button data-valve="raise">↑ Raise</button><button data-valve="hold" class="selected">Ⅱ Hold</button><button data-valve="lower">↓ Lower</button></div><label for="load">Pallet load <output id="load-value">750 kg</output></label><input id="load" type="range" min="250" max="1250" step="50" value="750"><label for="rpm">Engine speed <output id="rpm-value">1,200 rpm</output></label><input id="rpm" type="range" min="600" max="1800" step="100" value="1200"></div>
+      <div class="telemetry"><div class="metric"><span class="small-label">CYLINDER PRESSURE</span><strong><span id="pressure-value">62.5</span><small> bar</small></strong><div class="meter"><span id="pressure-meter"></span></div></div><div class="metric"><span class="small-label">PUMP FLOW</span><strong><span id="flow-value">12.0</span><small> L/min</small></strong><span class="metric-note" id="flow-note">Circulating back to tank</span></div><div class="metric"><span class="small-label">FORK HEIGHT</span><strong><span id="height-value">0.00</span><small> m</small></strong><span class="metric-note" id="travel-note">Piston travel: 0.00 m</span></div></div>
+    </section>
+    <footer><span>LOOK CLOSER. UNDERSTAND MORE.</span><span>Illustrative single-stage lift · Motion slowed for clarity <button id="sources-button">Model & sources ↗</button></span></footer>
+  </main>
+  <dialog id="about-dialog"><div class="dialog-top"><span class="eyebrow">BEHIND THE MODEL</span><button id="close-dialog" class="icon-button" aria-label="Close model information">×</button></div><h2>Real principles.<br>A simplified machine.</h2><p>This is an educational cutaway of a representative, vapor-fueled LPG forklift. Component locations are separated for visibility. It is not a manufacturer-specific design or an operating guide.</p><h3>What the animation models</h3><ul><li>A four-stroke spark-ignition engine, shown as one representative cylinder, drives a fixed-displacement gear pump through a mechanical power take-off.</li><li>A 3-position valve feeds a single-acting lift cylinder. In neutral, the cylinder port is blocked and pump flow returns to the reservoir. Lowering meters oil from the cylinder to tank under gravity.</li><li>An ideal 2:1 moving-sheave chain arrangement doubles carriage travel and requires twice the load force at the cylinder. Real mast layouts vary.</li><li>The live example uses a 60 mm cylinder bore, a 10 cm³/rev pump, a 150 kg carriage and a 0.75 m cylinder stroke. Friction, leakage and acceleration are omitted. The illustrative relief setting is 120 bar.</li><li>Oil is almost incompressible. Moving dots indicate direction of flow, not air bubbles. Color indicates the circuit; oil does not change color under pressure. Mechanical cycles and lift movement are slowed independently for teaching.</li><li>The wheels stay still: the separate traction transmission, steering and mast tilt circuits are outside this lift-system view.</li></ul><h3>Technical references</h3><a href="https://afdc.energy.gov/vehicles/how-do-propane-cars-work" target="_blank" rel="noreferrer">U.S. Department of Energy — Propane power systems ↗</a><a href="https://www.energy.gov/cmei/vehicles/articles/internal-combustion-engine-basics" target="_blank" rel="noreferrer">U.S. Department of Energy — Four-stroke combustion ↗</a><a href="https://www.parker.com/parkerimages/hydraulicpump/training/Acrobat/Industrialtrainingtemplatebasics.pdf" target="_blank" rel="noreferrer">Parker — Hydraulic pump basics ↗</a><a href="https://www.toyotaforklift.com/resource-library/blog/parts-and-service/mast-chains-purpose-and-maintenance" target="_blank" rel="noreferrer">Toyota — Mast chains and carriage movement ↗</a></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
