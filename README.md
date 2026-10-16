@@ -10,7 +10,7 @@
 - Unit-tested mechanics: force balance, flow vs. speed, load holding, relief pressure, chain and connecting-rod kinematics.
 - Buildless (native SVG, JavaScript and CSS), with CI that checks the physics and deploys to GitHub Pages.
 
-**Built with** OpenAI Codex, from a written brief through review and iteration. Stack: vanilla JS, SVG, Node test runner and GitHub Actions.
+**Built with OpenAI Codex** from a written brief, with Claude Code consulted for review. Stack: vanilla JS, SVG, Node test runner and GitHub Actions.
 
 ---
 
